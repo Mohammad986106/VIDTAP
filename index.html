@@ -44,8 +44,8 @@
       display: flex;
       justify-content: center;
       gap: 20px;
-      flex-wrap: wrap;
       margin-bottom: 40px;
+      flex-wrap: nowrap;
     }
 
     .feature {
@@ -55,6 +55,7 @@
       width: 120px;
       color: #a0c9ff;
       font-size: 14px;
+      flex-shrink: 0;
     }
 
     .btn-primary {
@@ -99,19 +100,19 @@
   <div class="container">
     <div class="logo"></div>
 
-    <h1>مرحباً بك</h1>
-    <p>واجهة احترافية مستوحاة من تصميم أنيق وحديث</p>
+    <h1 id="mainTitle">مرحباً بك</h1>
+    <p id="mainDescription">واجهة احترافية مستوحاة من تصميم أنيق وحديث</p>
 
     <div class="features">
-      <div class="feature">بدون إعلانات</div>
-      <div class="feature">سريع</div>
-      <div class="feature">آمن</div>
+      <div class="feature" id="f1">بدون إعلانات</div>
+      <div class="feature" id="f2">سريع</div>
+      <div class="feature" id="f3">آمن</div>
     </div>
 
-    <button class="btn-primary">تحميل الآن</button>
+    <button class="btn-primary" id="downloadBtn">تحميل الآن</button>
 
     <div class="language-switcher">
-      <select>
+      <select id="languageSelect">
         <option value="ar">ar</option>
         <option value="en">en</option>
         <option value="pt">pt</option>
@@ -124,6 +125,79 @@
 
     <div class="footer">© 2025 جميع الحقوق محفوظة</div>
   </div>
+
+  <script>
+    const translations = {
+      ar: {
+        mainTitle: "مرحباً بك",
+        mainDescription: "واجهة احترافية مستوحاة من تصميم أنيق وحديث",
+        f1: "بدون إعلانات",
+        f2: "سريع",
+        f3: "آمن",
+        downloadBtn: "تحميل الآن"
+      },
+      en: {
+        mainTitle: "Welcome",
+        mainDescription: "A professional interface inspired by a sleek, modern design",
+        f1: "No Ads",
+        f2: "Fast",
+        f3: "Secure",
+        downloadBtn: "Download Now"
+      },
+      pt: {
+        mainTitle: "Bem-vindo",
+        mainDescription: "Uma interface profissional inspirada em um design moderno",
+        f1: "Sem anúncios",
+        f2: "Rápido",
+        f3: "Seguro",
+        downloadBtn: "Baixar Agora"
+      },
+      es: {
+        mainTitle: "Bienvenido",
+        mainDescription: "Una interfaz profesional inspirada en un diseño moderno",
+        f1: "Sin anuncios",
+        f2: "Rápido",
+        f3: "Seguro",
+        downloadBtn: "Descargar ahora"
+      },
+      zh: {
+        mainTitle: "欢迎",
+        mainDescription: "一个专业界面，灵感来自时尚现代的设计",
+        f1: "无广告",
+        f2: "快速",
+        f3: "安全",
+        downloadBtn: "立即下载"
+      },
+      ja: {
+        mainTitle: "ようこそ",
+        mainDescription: "スタイリッシュでモダンなデザインにインスパイアされたプロのインターフェース",
+        f1: "広告なし",
+        f2: "高速",
+        f3: "安全",
+        downloadBtn: "今すぐダウンロード"
+      },
+      ko: {
+        mainTitle: "환영합니다",
+        mainDescription: "세련되고 현대적인 디자인에서 영감을 받은 전문 인터페이스",
+        f1: "광고 없음",
+        f2: "빠름",
+        f3: "안전함",
+        downloadBtn: "지금 다운로드"
+      }
+    };
+
+    document.getElementById('languageSelect').addEventListener('change', function () {
+      const selectedLang = this.value;
+      const t = translations[selectedLang];
+
+      document.getElementById('mainTitle').textContent = t.mainTitle;
+      document.getElementById('mainDescription').textContent = t.mainDescription;
+      document.getElementById('f1').textContent = t.f1;
+      document.getElementById('f2').textContent = t.f2;
+      document.getElementById('f3').textContent = t.f3;
+      document.getElementById('downloadBtn').textContent = t.downloadBtn;
+    });
+  </script>
 
 </body>
 </html>
