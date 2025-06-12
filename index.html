@@ -3,180 +3,224 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zenthera - الصفحة الرئيسية</title>
+  <title>VIDTAL - واجهة احترافية</title>
   <style>
     body {
       margin: 0;
+      padding: 0;
+      background: linear-gradient(160deg, #0c0c1e, #1a0936);
       font-family: 'Segoe UI', sans-serif;
-      background-color: #121212;
-      color: white;
+      color: #ffffff;
       text-align: center;
+      direction: rtl;
     }
 
-    header {
-      padding: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: #1e1e1e;
+    .container {
+      padding: 40px 20px;
     }
 
     .logo {
-      font-size: 24px;
-      font-weight: bold;
-      color: #00c3ff;
-    }
-
-    .lang-selector {
-      font-size: 16px;
-      background-color: transparent;
-      border: 1px solid #444;
-      border-radius: 8px;
-      padding: 6px 12px;
-      color: white;
-      cursor: pointer;
-    }
-
-    .features-container {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin: 40px 20px;
-    }
-
-    .feature-box {
-      width: 100px;
-      height: 100px;
-      background-color: #1f1f1f;
+      width: 80px;
+      height: 80px;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #6e00ff, #00c8ff);
       border-radius: 20px;
+      display: inline-block;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+      color: #b58eff;
+    }
+
+    p {
+      color: #cccccc;
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
+
+    .features {
       display: flex;
       justify-content: center;
+      gap: 15px;
+      flex-wrap: nowrap;
+      margin-bottom: 30px;
+    }
+
+    .feature {
+      background-color: #1d1b2a;
+      border-radius: 16px;
+      flex: 0 0 auto;
+      width: 80px;
+      height: 80px;
+      display: flex;
       align-items: center;
-      font-size: 14px;
-      color: white;
-      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+      justify-content: center;
+      color: #a0c9ff;
+      font-size: 13px;
+      word-wrap: break-word;
+      text-align: center;
+    }
+
+    @media (max-width: 500px) {
+      .feature {
+        width: 70px;
+        height: 70px;
+        font-size: 12px;
+      }
     }
 
     .btn-primary {
       background: linear-gradient(to right, #7a43ff, #3eb3ff);
       border: none;
-      padding: 14px 30px;
+      padding: 14px 35px;
       font-size: 18px;
       border-radius: 30px;
       color: white;
       cursor: pointer;
-      margin: 30px auto;
-      outline: none;
-      -webkit-tap-highlight-color: transparent;
-      transition: 0.3s;
-    }
-
-    .btn-primary:focus {
-      outline: none;
-      box-shadow: none;
+      margin: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
     }
 
     .btn-primary:hover {
-      opacity: 0.9;
+      transform: scale(1.05);
+      opacity: 0.95;
     }
 
-    @media (max-width: 600px) {
-      .features-container {
-        flex-direction: column;
-        align-items: center;
-      }
+    .language-switcher {
+      margin-top: 30px;
+    }
+
+    select {
+      padding: 10px;
+      font-size: 14px;
+      border-radius: 12px;
+      border: none;
+      background-color: #2b2547;
+      color: white;
+      cursor: pointer;
+    }
+
+    .footer {
+      margin-top: 50px;
+      font-size: 14px;
+      color: #888;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="logo">Zenthera</div>
-    <select class="lang-selector" id="langSelect" onchange="changeLanguage()">
-      <option value="ar">العربية</option>
-      <option value="en">English</option>
-      <option value="fr">Français</option>
-      <option value="hi">हिन्दी</option>
-      <option value="id">Bahasa Indonesia</option>
-      <option value="tr">Türkçe</option>
-      <option value="es">Español</option>
-      <option value="pt">Português</option>
-    </select>
-  </header>
+  <div class="container">
+    <div class="logo"></div>
 
-  <div class="features-container">
-    <div class="feature-box" id="feature1">الميزة 1</div>
-    <div class="feature-box" id="feature2">الميزة 2</div>
-    <div class="feature-box" id="feature3">الميزة 3</div>
+    <h1 id="mainTitle">مرحباً بك</h1>
+    <p id="mainDescription">واجهة احترافية مستوحاة من تصميم أنيق وحديث</p>
+
+    <div class="features">
+      <div class="feature" id="f1">بدون<br>إعلانات</div>
+      <div class="feature" id="f2">سريع</div>
+      <div class="feature" id="f3">آمن</div>
+    </div>
+
+    <button class="btn-primary" id="downloadBtn">تحميل الآن</button>
+
+    <div class="language-switcher">
+      <select id="languageSelect">
+        <option value="ar">ar</option>
+        <option value="en">en</option>
+        <option value="pt">pt</option>
+        <option value="es">es</option>
+        <option value="fr">fr</option>
+        <option value="zh">zh</option>
+        <option value="ja">ja</option>
+        <option value="ko">ko</option>
+      </select>
+    </div>
+
+    <div class="footer">© 2025 جميع الحقوق محفوظة لـ VIDTAL</div>
   </div>
-
-  <button class="btn-primary" id="downloadBtn">تحميل الآن</button>
 
   <script>
     const translations = {
       ar: {
-        feature1: "الميزة 1",
-        feature2: "الميزة 2",
-        feature3: "الميزة 3",
-        download: "تحميل الآن"
+        mainTitle: "مرحباً بك",
+        mainDescription: "واجهة احترافية مستوحاة من تصميم أنيق وحديث",
+        f1: "بدون<br>إعلانات",
+        f2: "سريع",
+        f3: "آمن",
+        downloadBtn: "تحميل الآن"
       },
       en: {
-        feature1: "Feature 1",
-        feature2: "Feature 2",
-        feature3: "Feature 3",
-        download: "Download Now"
-      },
-      fr: {
-        feature1: "Fonction 1",
-        feature2: "Fonction 2",
-        feature3: "Fonction 3",
-        download: "Télécharger"
-      },
-      hi: {
-        feature1: "फ़ीचर 1",
-        feature2: "फ़ीचर 2",
-        feature3: "फ़ीचर 3",
-        download: "डाउनलोड करें"
-      },
-      id: {
-        feature1: "Fitur 1",
-        feature2: "Fitur 2",
-        feature3: "Fitur 3",
-        download: "Unduh Sekarang"
-      },
-      tr: {
-        feature1: "Özellik 1",
-        feature2: "Özellik 2",
-        feature3: "Özellik 3",
-        download: "Şimdi İndir"
-      },
-      es: {
-        feature1: "Función 1",
-        feature2: "Función 2",
-        feature3: "Función 3",
-        download: "Descargar ahora"
+        mainTitle: "Welcome",
+        mainDescription: "A professional interface inspired by a sleek, modern design",
+        f1: "No<br>Ads",
+        f2: "Fast",
+        f3: "Secure",
+        downloadBtn: "Download Now"
       },
       pt: {
-        feature1: "Recurso 1",
-        feature2: "Recurso 2",
-        feature3: "Recurso 3",
-        download: "Baixar Agora"
+        mainTitle: "Bem-vindo",
+        mainDescription: "Uma interface profissional inspirada em um design moderno",
+        f1: "Sem<br>anúncios",
+        f2: "Rápido",
+        f3: "Seguro",
+        downloadBtn: "Baixar Agora"
+      },
+      es: {
+        mainTitle: "Bienvenido",
+        mainDescription: "Una interfaz profesional inspirada en un diseño moderno",
+        f1: "Sin<br>anuncios",
+        f2: "Rápido",
+        f3: "Seguro",
+        downloadBtn: "Descargar ahora"
+      },
+      fr: {
+        mainTitle: "Bienvenue",
+        mainDescription: "Une interface professionnelle inspirée d’un design moderne",
+        f1: "Sans<br>pub",
+        f2: "Rapide",
+        f3: "Sécurisé",
+        downloadBtn: "Télécharger"
+      },
+      zh: {
+        mainTitle: "欢迎",
+        mainDescription: "一个专业界面，灵感来自时尚现代的设计",
+        f1: "无<br>广告",
+        f2: "快速",
+        f3: "安全",
+        downloadBtn: "立即下载"
+      },
+      ja: {
+        mainTitle: "ようこそ",
+        mainDescription: "スタイリッシュでモダンなデザインにインスパイアされたプロのインターフェース",
+        f1: "広告<br>なし",
+        f2: "高速",
+        f3: "安全",
+        downloadBtn: "今すぐダウンロード"
+      },
+      ko: {
+        mainTitle: "환영합니다",
+        mainDescription: "세련되고 현대적인 디자인에서 영감을 받은 전문 인터페이스",
+        f1: "광고<br>없음",
+        f2: "빠름",
+        f3: "안전함",
+        downloadBtn: "지금 다운로드"
       }
     };
 
-    function changeLanguage() {
-      const lang = document.getElementById("langSelect").value;
-      const dir = (lang === "ar" || lang === "hi") ? "rtl" : "ltr";
+    document.getElementById('languageSelect').addEventListener('change', function () {
+      const selectedLang = this.value;
+      const t = translations[selectedLang];
 
-      document.getElementById("feature1").textContent = translations[lang].feature1;
-      document.getElementById("feature2").textContent = translations[lang].feature2;
-      document.getElementById("feature3").textContent = translations[lang].feature3;
-      document.getElementById("downloadBtn").textContent = translations[lang].download;
-
-      document.documentElement.lang = lang;
-      document.documentElement.dir = dir;
-    }
+      document.getElementById('mainTitle').innerHTML = t.mainTitle;
+      document.getElementById('mainDescription').innerHTML = t.mainDescription;
+      document.getElementById('f1').innerHTML = t.f1;
+      document.getElementById('f2').innerHTML = t.f2;
+      document.getElementById('f3').innerHTML = t.f3;
+      document.getElementById('downloadBtn').innerHTML = t.downloadBtn;
+    });
   </script>
 
 </body>
