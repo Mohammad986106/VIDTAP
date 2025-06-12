@@ -16,7 +16,7 @@
     }
 
     .container {
-      padding: 50px 20px;
+      padding: 40px 20px;
     }
 
     .logo {
@@ -37,25 +37,38 @@
     p {
       color: #cccccc;
       font-size: 16px;
-      margin-bottom: 40px;
+      margin-bottom: 30px;
     }
 
     .features {
       display: flex;
       justify-content: center;
-      gap: 20px;
-      margin-bottom: 40px;
+      gap: 15px;
       flex-wrap: nowrap;
+      margin-bottom: 30px;
     }
 
     .feature {
       background-color: #1d1b2a;
-      padding: 20px;
-      border-radius: 20px;
-      width: 120px;
+      border-radius: 16px;
+      flex: 0 0 auto;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       color: #a0c9ff;
-      font-size: 14px;
-      flex-shrink: 0;
+      font-size: 13px;
+      word-wrap: break-word;
+      text-align: center;
+    }
+
+    @media (max-width: 500px) {
+      .feature {
+        width: 70px;
+        height: 70px;
+        font-size: 12px;
+      }
     }
 
     .btn-primary {
@@ -104,7 +117,7 @@
     <p id="mainDescription">واجهة احترافية مستوحاة من تصميم أنيق وحديث</p>
 
     <div class="features">
-      <div class="feature" id="f1">بدون إعلانات</div>
+      <div class="feature" id="f1">بدون<br>إعلانات</div>
       <div class="feature" id="f2">سريع</div>
       <div class="feature" id="f3">آمن</div>
     </div>
@@ -131,7 +144,7 @@
       ar: {
         mainTitle: "مرحباً بك",
         mainDescription: "واجهة احترافية مستوحاة من تصميم أنيق وحديث",
-        f1: "بدون إعلانات",
+        f1: "بدون<br>إعلانات",
         f2: "سريع",
         f3: "آمن",
         downloadBtn: "تحميل الآن"
@@ -139,7 +152,7 @@
       en: {
         mainTitle: "Welcome",
         mainDescription: "A professional interface inspired by a sleek, modern design",
-        f1: "No Ads",
+        f1: "No<br>Ads",
         f2: "Fast",
         f3: "Secure",
         downloadBtn: "Download Now"
@@ -147,7 +160,7 @@
       pt: {
         mainTitle: "Bem-vindo",
         mainDescription: "Uma interface profissional inspirada em um design moderno",
-        f1: "Sem anúncios",
+        f1: "Sem<br>anúncios",
         f2: "Rápido",
         f3: "Seguro",
         downloadBtn: "Baixar Agora"
@@ -155,7 +168,7 @@
       es: {
         mainTitle: "Bienvenido",
         mainDescription: "Una interfaz profesional inspirada en un diseño moderno",
-        f1: "Sin anuncios",
+        f1: "Sin<br>anuncios",
         f2: "Rápido",
         f3: "Seguro",
         downloadBtn: "Descargar ahora"
@@ -163,7 +176,7 @@
       zh: {
         mainTitle: "欢迎",
         mainDescription: "一个专业界面，灵感来自时尚现代的设计",
-        f1: "无广告",
+        f1: "无<br>广告",
         f2: "快速",
         f3: "安全",
         downloadBtn: "立即下载"
@@ -171,7 +184,7 @@
       ja: {
         mainTitle: "ようこそ",
         mainDescription: "スタイリッシュでモダンなデザインにインスパイアされたプロのインターフェース",
-        f1: "広告なし",
+        f1: "広告<br>なし",
         f2: "高速",
         f3: "安全",
         downloadBtn: "今すぐダウンロード"
@@ -179,7 +192,7 @@
       ko: {
         mainTitle: "환영합니다",
         mainDescription: "세련되고 현대적인 디자인에서 영감을 받은 전문 인터페이스",
-        f1: "광고 없음",
+        f1: "광고<br>없음",
         f2: "빠름",
         f3: "안전함",
         downloadBtn: "지금 다운로드"
@@ -190,12 +203,12 @@
       const selectedLang = this.value;
       const t = translations[selectedLang];
 
-      document.getElementById('mainTitle').textContent = t.mainTitle;
-      document.getElementById('mainDescription').textContent = t.mainDescription;
-      document.getElementById('f1').textContent = t.f1;
-      document.getElementById('f2').textContent = t.f2;
-      document.getElementById('f3').textContent = t.f3;
-      document.getElementById('downloadBtn').textContent = t.downloadBtn;
+      document.getElementById('mainTitle').innerHTML = t.mainTitle;
+      document.getElementById('mainDescription').innerHTML = t.mainDescription;
+      document.getElementById('f1').innerHTML = t.f1;
+      document.getElementById('f2').innerHTML = t.f2;
+      document.getElementById('f3').innerHTML = t.f3;
+      document.getElementById('downloadBtn').innerHTML = t.downloadBtn;
     });
   </script>
 
