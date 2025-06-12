@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VIDTAL - واجهة احترافية</title>
+  <title>واجهة احترافية</title>
   <style>
     body {
       margin: 0;
@@ -17,6 +17,23 @@
 
     .container {
       padding: 40px 20px;
+      position: relative;
+    }
+
+    .language-switcher {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    select {
+      padding: 10px 14px;
+      font-size: 14px;
+      border-radius: 12px;
+      border: none;
+      background-color: #2b2547;
+      color: white;
+      cursor: pointer;
     }
 
     .logo {
@@ -74,33 +91,23 @@
     .btn-primary {
       background: linear-gradient(to right, #7a43ff, #3eb3ff);
       border: none;
-      padding: 14px 35px;
+      padding: 14px 30px;
       font-size: 18px;
       border-radius: 30px;
       color: white;
       cursor: pointer;
       margin: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      transition: all 0.3s ease;
+      transition: 0.3s;
+      outline: none;
     }
 
     .btn-primary:hover {
-      transform: scale(1.05);
-      opacity: 0.95;
+      opacity: 0.9;
     }
 
-    .language-switcher {
-      margin-top: 30px;
-    }
-
-    select {
-      padding: 10px;
-      font-size: 14px;
-      border-radius: 12px;
-      border: none;
-      background-color: #2b2547;
-      color: white;
-      cursor: pointer;
+    .btn-primary:focus {
+      outline: none;
+      box-shadow: none;
     }
 
     .footer {
@@ -113,6 +120,19 @@
 <body>
 
   <div class="container">
+
+    <div class="language-switcher">
+      <select id="languageSelect">
+        <option value="ar">العربية</option>
+        <option value="en">English</option>
+        <option value="es">Español</option>
+        <option value="pt">Português</option>
+        <option value="zh">中文</option>
+        <option value="ja">日本語</option>
+        <option value="ko">한국어</option>
+      </select>
+    </div>
+
     <div class="logo"></div>
 
     <h1 id="mainTitle">مرحباً بك</h1>
@@ -126,20 +146,7 @@
 
     <button class="btn-primary" id="downloadBtn">تحميل الآن</button>
 
-    <div class="language-switcher">
-      <select id="languageSelect">
-        <option value="ar">ar</option>
-        <option value="en">en</option>
-        <option value="pt">pt</option>
-        <option value="es">es</option>
-        <option value="fr">fr</option>
-        <option value="zh">zh</option>
-        <option value="ja">ja</option>
-        <option value="ko">ko</option>
-      </select>
-    </div>
-
-    <div class="footer">© 2025 جميع الحقوق محفوظة لـ VIDTAL</div>
+    <div class="footer">© 2025 جميع الحقوق محفوظة</div>
   </div>
 
   <script>
@@ -160,14 +167,6 @@
         f3: "Secure",
         downloadBtn: "Download Now"
       },
-      pt: {
-        mainTitle: "Bem-vindo",
-        mainDescription: "Uma interface profissional inspirada em um design moderno",
-        f1: "Sem<br>anúncios",
-        f2: "Rápido",
-        f3: "Seguro",
-        downloadBtn: "Baixar Agora"
-      },
       es: {
         mainTitle: "Bienvenido",
         mainDescription: "Una interfaz profesional inspirada en un diseño moderno",
@@ -176,13 +175,13 @@
         f3: "Seguro",
         downloadBtn: "Descargar ahora"
       },
-      fr: {
-        mainTitle: "Bienvenue",
-        mainDescription: "Une interface professionnelle inspirée d’un design moderne",
-        f1: "Sans<br>pub",
-        f2: "Rapide",
-        f3: "Sécurisé",
-        downloadBtn: "Télécharger"
+      pt: {
+        mainTitle: "Bem-vindo",
+        mainDescription: "Uma interface profissional inspirada em um design moderno",
+        f1: "Sem<br>anúncios",
+        f2: "Rápido",
+        f3: "Seguro",
+        downloadBtn: "Baixar Agora"
       },
       zh: {
         mainTitle: "欢迎",
