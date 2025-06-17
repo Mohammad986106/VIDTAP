@@ -1,135 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zenthera</title>
-  <style>
-    :root {
-      --primary-color: #000;
-      --secondary-color: #fff;
-      --accent-color: #1e3a8a; /* درجة أزرق ذكية يمكنك تفعيلها لاحقًا */
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--secondary-color);
-      color: var(--primary-color);
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-    header {
-      padding: 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid var(--primary-color);
-    }
-
-    .logo {
-      font-size: 1.8rem;
-      font-weight: bold;
-      letter-spacing: 1px;
-    }
-
-    nav a {
-      margin-left: 1.5rem;
-      text-decoration: none;
-      color: var(--primary-color);
-      font-weight: 500;
-      transition: color 0.3s ease;
-    }
-
-    nav a:hover {
-      color: var(--accent-color);
-    }
-
-    main {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 3rem 1rem;
-    }
-
-    .hero {
-      max-width: 700px;
-    }
-
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      line-height: 1.6;
-      margin-bottom: 2rem;
-    }
-
-    .hero button {
-      padding: 0.75rem 2rem;
-      font-size: 1rem;
-      border: none;
-      background-color: var(--primary-color);
-      color: var(--secondary-color);
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    .hero button:hover {
-      background-color: var(--accent-color);
-    }
-
-    footer {
-      padding: 1rem 2rem;
-      text-align: center;
-      font-size: 0.9rem;
-      border-top: 1px solid var(--primary-color);
-      background-color: var(--secondary-color);
-    }
-
-    @media (max-width: 600px) {
-      .hero h1 {
-        font-size: 2rem;
-      }
-
-      nav {
-        display: none;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VidByTap - Mobile Video Downloader</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        .language-switcher {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 16px;
+            z-index: 100;
+        }
+        
+        .language-current {
+            background-color: transparent;
+            color: #b5e3ff;
+            border: 1px solid #b5e3ff;
+            border-radius: 4px;
+            padding: 6px 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            min-width: 120px;
+            text-align: left;
+        }
+        
+        .language-current:hover {
+            background-color: rgba(181, 227, 255, 0.1);
+        }
+        
+        .language-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.9);
+            border: 1px solid #b5e3ff;
+            border-radius: 4px;
+            width: 100%;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+        
+        .language-dropdown.show {
+            display: block;
+        }
+        
+        .language-option {
+            color: #ffffff;
+            padding: 8px 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .language-option:hover {
+            background-color: rgba(181, 227, 255, 0.2);
+            color: #b5e3ff;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #000000;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .download-btn {
+            background-color: #2196f3;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .download-btn:hover {
+            background-color: #003366;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .download-btn:active {
+            background-color: #b5e3ff;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="logo">Zenthera</div>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">Apps</a>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
-    </nav>
-  </header>
-
-  <main>
-    <div class="hero">
-      <h1>We Build Intelligent Mobile Experiences</h1>
-      <p>At Zenthera, we design and build cutting-edge apps that empower creativity and productivity across platforms.</p>
-      <button>Explore Our Apps</button>
+    <div class="language-switcher">
+        <button class="language-current" id="language-current">English</button>
+        <div class="language-dropdown" id="language-dropdown">
+            <div class="language-option" data-lang="en">English</div>
+            <div class="language-option" data-lang="es">Español</div>
+            <div class="language-option" data-lang="ar">العربية</div>
+        </div>
     </div>
-  </main>
+    
+    <div class="text-center px-4">
+        <h1 class="text-white text-5xl md:text-7xl font-bold mb-8 tracking-tight">VidByTap</h1>
+        <button class="download-btn text-white font-bold py-4 px-8 rounded-full text-lg md:text-xl">
+            Download App
+        </button>
+    </div>
 
-  <footer>
-    &copy; 2025 Zenthera. All rights reserved.
-  </footer>
+    <script>
+        // Multilingual content
+        const translations = {
+            en: {
+                title: "VidByTap",
+                button: "Download Now"
+            },
+            es: {
+                title: "VidByTap",
+                button: "Descargar Ahora"
+            },
+            ar: {
+                title: "VidByTap",
+                button: "حمله الان"
+            }
+        };
+
+        // Language switcher functionality
+        const languageCurrent = document.getElementById('language-current');
+        const languageDropdown = document.getElementById('language-dropdown');
+        const languageOptions = document.querySelectorAll('.language-option');
+        const titleElement = document.querySelector('h1');
+        const buttonElement = document.querySelector('.download-btn');
+
+        function updateContent(lang) {
+            titleElement.textContent = translations[lang].title;
+            buttonElement.textContent = translations[lang].button;
+            
+            // Update current language display with language name
+            const languageNames = {
+                en: "English",
+                es: "Español", 
+                ar: "العربية"
+            };
+            languageCurrent.textContent = languageNames[lang];
+            
+            // Adjust text direction for Arabic
+            if (lang === 'ar') {
+                document.body.style.direction = 'rtl';
+                document.querySelector('.text-center').style.direction = 'rtl';
+                languageCurrent.style.textAlign = 'right';
+            } else {
+                document.body.style.direction = 'ltr';
+                document.querySelector('.text-center').style.direction = 'ltr';
+                languageCurrent.style.textAlign = 'left';
+            }
+        }
+
+        // Toggle dropdown visibility
+        languageCurrent.addEventListener('click', () => {
+            languageDropdown.classList.toggle('show');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.language-switcher')) {
+                languageDropdown.classList.remove('show');
+            }
+        });
+
+        // Handle language selection
+        languageOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                const lang = option.dataset.lang;
+                updateContent(lang);
+                languageDropdown.classList.remove('show');
+            });
+        });
+
+        // Initialize with English
+        updateContent('en');
+
+        // Optional: Add a color cycling effect on button hover
+        const btn = document.querySelector('.download-btn');
+        let colorIndex = 0;
+        const colors = ['#2196f3', '#003366', '#b5e3ff'];
+        
+        btn.addEventListener('mouseenter', () => {
+            colorIndex = (colorIndex + 1) % colors.length;
+            btn.style.backgroundColor = colors[colorIndex];
+        });
+    </script>
 </body>
 </html>
